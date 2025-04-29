@@ -314,6 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToSpawn:
+  - {fileID: 8929917937803821775, guid: 8b300228243c18747ba699cf4d163095, type: 3}
+  - {fileID: 9206091769688677576, guid: ba26aac644d14f346b3189fedcb4e179, type: 3}
   - {fileID: 154187971917232527, guid: 61d026c3fb7e7424bb6583336da1dbf2, type: 3}
   soundEnter: {fileID: 8300000, guid: 5b58be48b2359754d91ab96a277067b6, type: 3}
 --- !u!82 &44949523
