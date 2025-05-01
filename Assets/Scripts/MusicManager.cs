@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MusicManager : MonoBehaviour
 {
     [Header("Audio")]
-    public AudioSource musicSource; // Taruh AudioSource dari AR Session Origin
+    public AudioSource musicSource;
     public bool isMusicOn = true;
 
     [Header("UI")]

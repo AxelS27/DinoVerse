@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6029804858313921207}
   - component: {fileID: 6363403675018431658}
+  - component: {fileID: 6949143949397212805}
   m_Layer: 0
   m_Name: Stegosaurus
   m_TagString: Untagged
@@ -54,6 +55,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 67.9, y: 153.55, z: 332.18}
   m_Center: {x: 0, y: 65.8, z: 30.2}
+--- !u!114 &6949143949397212805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154187971917232527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baccb7297bb221548ba5968b5c78aebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1657223100609406633
 PrefabInstance:
   m_ObjectHideFlags: 0

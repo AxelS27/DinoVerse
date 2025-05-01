@@ -970,6 +970,9 @@ MonoBehaviour:
   - {fileID: 108544, guid: d638ef2ca2fe20c4c9c08e125692d3f4, type: 3}
   - {fileID: 199470, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
   - {fileID: 193742, guid: 9c74caa742791864f9c678287121e6c9, type: 3}
+  - {fileID: 3213726497564202204, guid: 89f4d4ab489a3c04b8c2d6a9f3fff46a, type: 3}
+  - {fileID: 5276274209265008866, guid: 7cf384c6121d3c946a9b6c53e1e8b02d, type: 3}
+  - {fileID: 8021102337810090904, guid: b541f65a9486bf34d827b178acd3840f, type: 3}
   placementCooldown: 0.1
 --- !u!4 &463930440
 Transform:
@@ -2346,7 +2349,6 @@ GameObject:
   - component: {fileID: 1489482458}
   - component: {fileID: 1489482457}
   - component: {fileID: 1489482456}
-  - component: {fileID: 1489482460}
   - component: {fileID: 1489482461}
   m_Layer: 5
   m_Name: Dropdown
@@ -2470,6 +2472,15 @@ MonoBehaviour:
     - m_Text: bush03
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: stone01
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: stone02
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    - m_Text: stone03
+      m_Image: {fileID: 0}
+      m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2512,18 +2523,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489482454}
   m_CullTransparentMesh: 1
---- !u!114 &1489482460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489482454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509b123f42b3c2641a88c981041ff2de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &1489482461
 CanvasGroup:
   m_ObjectHideFlags: 0

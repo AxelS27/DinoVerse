@@ -1,18 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; // Untuk mengakses Text pada tombol
+using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _startingSceneTransition;
     [SerializeField] private GameObject _endingSceneTransition;
     [SerializeField] private Animator endingAnimator;
-    [SerializeField] private GameObject inspectorButton; // Tombol yang memiliki text untuk scene 'InspectorWorld'
+    [SerializeField] private GameObject inspectorButton;
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "SampleScene") // Kalau di scene AR
+        if (SceneManager.GetActiveScene().name == "SampleScene")
         {
             StartCoroutine(PlayEndingAnimDirectly());
         }
@@ -27,7 +28,7 @@ public class MainMenuManager : MonoBehaviour
         if (_startingSceneTransition != null)
             _startingSceneTransition.SetActive(true);
 
-        yield return new WaitForSeconds(1f); // Dipersingkat dari 5 detik jadi 1 detik
+        yield return new WaitForSeconds(1f);
 
         if (_startingSceneTransition != null)
             _startingSceneTransition.SetActive(false);
@@ -38,14 +39,14 @@ public class MainMenuManager : MonoBehaviour
         if (_startingSceneTransition != null)
             _startingSceneTransition.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f); // Delay kecil saja buat transisi halus
+        yield return new WaitForSeconds(0.5f);
 
         if (endingAnimator != null)
         {
-            endingAnimator.Play("EndingTransition"); // Mainkan animasi ending
+            endingAnimator.Play("EndingTransition");
         }
 
-        yield return new WaitForSeconds(1.5f); // Cepatkan tunggu animasi
+        yield return new WaitForSeconds(1.5f);
 
         if (_startingSceneTransition != null)
             _startingSceneTransition.SetActive(false);
@@ -56,7 +57,7 @@ public class MainMenuManager : MonoBehaviour
         if (_endingSceneTransition != null)
             _endingSceneTransition.SetActive(true);
 
-        StartCoroutine(WaitAndLoadScene("SampleScene")); // Menggunakan nama scene
+        StartCoroutine(WaitAndLoadScene("SampleScene"));
     }
 
     public void BackToMenu()
@@ -64,23 +65,21 @@ public class MainMenuManager : MonoBehaviour
         if (_endingSceneTransition != null)
             _endingSceneTransition.SetActive(true);
 
-        StartCoroutine(WaitAndLoadScene("MainMenu")); // Menggunakan nama scene
+        StartCoroutine(WaitAndLoadScene("MainMenu"));
     }
 
-    // Fungsi InspectorWorld untuk pindah ke scene berdasarkan teks tombol
     public void InspectorWorld()
     {
         if (_endingSceneTransition != null)
-            _endingSceneTransition.SetActive(true); // Aktifkan transisi mulai
+            _endingSceneTransition.SetActive(true);
 
-        // Membaca teks tombol untuk menentukan scene yang akan dimuat
         string buttonText = inspectorButton.GetComponentInChildren<TextMeshProUGUI>().text;
-        StartCoroutine(WaitAndLoadScene(buttonText)); // Pindah ke scene berdasarkan teks tombol
+        StartCoroutine(WaitAndLoadScene(buttonText));
     }
 
     IEnumerator WaitAndLoadScene(string sceneName)
     {
-        yield return new WaitForSeconds(1f); // Loading cepat, 1 detik
-        SceneManager.LoadScene(sceneName); // Muat scene berdasarkan nama
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
     }
 }

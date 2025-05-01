@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkyboxManager : MonoBehaviour
+public class SkyboxRotator : MonoBehaviour
 {
     public Material skyboxMaterialPrefab;
     public float rotationSpeed = 1f;
@@ -9,7 +9,6 @@ public class SkyboxManager : MonoBehaviour
 
     void Start()
     {
-        // Buat instansi material dari prefab untuk menghindari mengubah asset asli
         runtimeSkybox = Instantiate(skyboxMaterialPrefab);
         RenderSettings.skybox = runtimeSkybox;
     }

@@ -14,7 +14,6 @@ public class TakePhotos : MonoBehaviour
 
     IEnumerator TakeAPhoto()
     {
-        // Main jepretan suara
         if (cameraSound != null)
         {
             cameraSound.Play();

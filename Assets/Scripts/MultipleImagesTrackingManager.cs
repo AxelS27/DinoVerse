@@ -5,12 +5,12 @@ using UnityEngine.XR.ARSubsystems;
 
 public class MultipleImagesTrackingManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] prefabToSpawn; // Prefab objek yang akan muncul
-    public AudioClip soundEnter; // Suara saat objek pertama kali muncul
-    private AudioSource audioSource; // Audio source untuk memainkan suara
+    [SerializeField] private GameObject[] prefabToSpawn;
+    public AudioClip soundEnter;
+    private AudioSource audioSource;
 
-    private ARTrackedImageManager _arTrackedImageManager; // Manajer gambar yang terdeteksi AR
-    private Dictionary<string, GameObject> _arObjects; // Dictionary untuk menyimpan objek berdasarkan nama gambar referensi
+    private ARTrackedImageManager _arTrackedImageManager;
+    private Dictionary<string, GameObject> _arObjects;
 
     private void Awake()
     {
@@ -23,7 +23,6 @@ public class MultipleImagesTrackingManager : MonoBehaviour
     {
         _arTrackedImageManager.trackedImagesChanged += OnTrackedImageChanged;
 
-        // Membuat objek untuk setiap prefab yang ditentukan
         foreach (GameObject prefab in prefabToSpawn)
         {
             GameObject newARObject = Instantiate(prefab, Vector3.zero, Quaternion.identity);
@@ -40,20 +39,17 @@ public class MultipleImagesTrackingManager : MonoBehaviour
 
     private void OnTrackedImageChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        // Menangani gambar yang baru ditambahkan
         foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
             UpdateTrackedImage(trackedImage);
             PlaySound(soundEnter);
         }
 
-        // Menangani gambar yang diperbarui
         foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
             UpdateTrackedImage(trackedImage);
         }
 
-        // Menangani gambar yang dihapus
         foreach (ARTrackedImage trackedImage in eventArgs.removed)
         {
             if (_arObjects.ContainsKey(trackedImage.referenceImage.name))

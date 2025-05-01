@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.EventSystems; // Untuk cek klik UI
+using UnityEngine.EventSystems;
 
 public class DinosaursClickHandler : MonoBehaviour
 {
@@ -46,7 +46,6 @@ public class DinosaursClickHandler : MonoBehaviour
 
     void Update()
     {
-        // Cegah klik jika sedang menyentuh UI
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             return;
@@ -75,7 +74,7 @@ public class DinosaursClickHandler : MonoBehaviour
                         {
                             if (inspectorText != null)
                             {
-                                inspectorText.text = gameObject.name; // Ganti teks
+                                inspectorText.text = gameObject.name;
                             }
 
                             inspectorWorld.SetActive(true);

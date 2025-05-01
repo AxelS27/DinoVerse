@@ -34,7 +34,7 @@ public class ARRaycastPlace : MonoBehaviour
 
     IEnumerator HidePlaneIfNone()
     {
-        yield return null; // Tunggu 1 frame
+        yield return null;
         if (TMP_Dropdown.value == 0)
         {
             ToggleARPlanes(false);
@@ -96,7 +96,9 @@ public class ARRaycastPlace : MonoBehaviour
                 ARPlane hitPlane = arPlaneManager.GetPlane(hits[0].trackableId);
                 if (hitPlane != null && hitPlane.gameObject.activeInHierarchy)
                 {
-                    GameObject placedObject = Instantiate(objectToPlace, hitPose.position, hitPose.rotation);
+                    Quaternion randomYRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+
+                    GameObject placedObject = Instantiate(objectToPlace, hitPose.position, randomYRotation);
                     placedObjects.Add(placedObject);
 
                     lastPlacementTime = Time.time;
@@ -104,7 +106,6 @@ public class ARRaycastPlace : MonoBehaviour
                     if (placementAudio != null)
                         placementAudio.Play();
 
-                    // Mulai animasi dari scale 0 ke scale asli
                     StartCoroutine(AnimatePlacement(placedObject, objectToPlace.transform.localScale));
                 }
             }
