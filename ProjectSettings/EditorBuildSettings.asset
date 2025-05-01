@@ -6,14 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sceene/MainMenu.unity
+    path: Assets/Scene/MainMenu.unity
     guid: ca8c017d0931b2148afce3e6305cf3fa
   - enabled: 1
-    path: Assets/Sceene/SampleScene.unity
+    path: Assets/Scene/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Sceene/T-Rex.unity
+    path: Assets/Scene/T-Rex.unity
     guid: d2aedefb2d218a54593ad7d851c35f81
+  - enabled: 1
+    path: Assets/Scene/Triceratops.unity
+    guid: 51f15220d6936c34d8023070084c9723
+  - enabled: 1
+    path: Assets/Scene/Stegosaurus.unity
+    guid: 1bb93c0745ec6e346af2178e18be928c
+  - enabled: 1
+    path: Assets/Scene/Spinosaurus.unity
+    guid: f45e49f50f72ce0488f446615a4584da
+  - enabled: 1
+    path: Assets/Scene/Pteranodon.unity
+    guid: 732c0cb280f515142be238a1cc9e00ea
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3b82075ead9d0304fac16e7883dfd09d, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 8a6c0580c3711c243b70c59071addaa5, type: 2}

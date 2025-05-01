@@ -1,83 +1,89 @@
 using UnityEngine;
-using TMPro; // Untuk menggunakan TMP_Text
+using TMPro;
 using System.Collections;
+using UnityEngine.EventSystems; // Untuk cek klik UI
 
 public class DinosaursClickHandler : MonoBehaviour
 {
-    private GameObject inspectorWorld; // Ini adalah objek yang juga berfungsi sebagai button
-    private Animator inspectorWorldAnimator; // Animator untuk mengontrol animasi fade
+    private GameObject inspectorWorld;
+    private Animator inspectorWorldAnimator;
+    private TMP_Text inspectorText;
 
-    private bool isButtonActive = false; // Status tombol, mulai dengan tidak aktif
-    private float clickCooldown = 1f; // Cooldown 1 detik agar tidak double click
-    private float lastClickTime = -1f; // Waktu terakhir klik
+    private bool isButtonActive = false;
+    private float clickCooldown = 1f;
+    private float lastClickTime = -1f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Cari objek Canvas yang bernama "Canvas"
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
 
         if (canvas != null)
         {
-            // Cari objek anak bernama "InspectorWorld" di dalam Canvas
             inspectorWorld = canvas.transform.Find("InspectorWorld")?.gameObject;
 
-            // Ambil komponen Animator dari inspectorWorld
-            inspectorWorldAnimator = inspectorWorld?.GetComponent<Animator>();
-
-            // Pastikan inspectorWorld (yang juga merupakan button) tidak aktif di awal
             if (inspectorWorld != null)
             {
-                inspectorWorld.SetActive(false); // Set awal objek tidak aktif
+                inspectorWorldAnimator = inspectorWorld.GetComponent<Animator>();
+                inspectorText = inspectorWorld.GetComponentInChildren<TMP_Text>();
+
+                if (inspectorText == null)
+                {
+                    Debug.LogError("TMP_Text not found in InspectorWorld!");
+                }
+
+                inspectorWorld.SetActive(false);
             }
             else
             {
-                Debug.LogError("InspectorWorld tidak ditemukan di dalam Canvas!");
+                Debug.LogError("InspectorWorld not found inside Canvas!");
             }
         }
         else
         {
-            Debug.LogError("Canvas tidak ditemukan di dalam scene!");
+            Debug.LogError("Canvas not found in the scene!");
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Cek jika sudah cukup waktu (Cooldown) sejak klik terakhir
-        if (Time.time - lastClickTime < clickCooldown)
+        // Cegah klik jika sedang menyentuh UI
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
-            return; // Jika belum 1 detik, tidak lakukan apa-apa
+            return;
         }
 
-        // Cek jika model dinosaurus diklik (menggunakan raycast)
-        if (Input.GetMouseButtonDown(0)) // 0 berarti klik kiri mouse
+        if (Time.time - lastClickTime < clickCooldown)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // Cek apakah ray mengenai dinosaurus ini
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-                    // Set waktu terakhir klik
                     lastClickTime = Time.time;
-
-                    // Toggle status aktif untuk inspectorWorld
                     isButtonActive = !isButtonActive;
 
-                    // Tampilkan atau sembunyikan InspectorWorld dengan animasi fade
                     if (inspectorWorld != null)
                     {
                         if (isButtonActive)
                         {
-                            inspectorWorld.SetActive(true); // Aktifkan sebelum animasi fade-in
-                            inspectorWorldAnimator?.Play("InspectorFadeIn"); // Mulai animasi fade-in
+                            if (inspectorText != null)
+                            {
+                                inspectorText.text = gameObject.name; // Ganti teks
+                            }
+
+                            inspectorWorld.SetActive(true);
+                            inspectorWorldAnimator?.Play("InspectorFadeIn");
                         }
                         else
                         {
-                            inspectorWorldAnimator?.Play("InspectorFadeOut"); // Mulai animasi fade-out
+                            inspectorWorldAnimator?.Play("InspectorFadeOut");
                             StartCoroutine(WaitForFadeOutAndDisableButton());
                         }
                     }
@@ -86,14 +92,18 @@ public class DinosaursClickHandler : MonoBehaviour
         }
     }
 
-    // Coroutine untuk menunggu animasi fade-out selesai
     private IEnumerator WaitForFadeOutAndDisableButton()
     {
-        // Tunggu hingga animasi fade-out selesai
-        yield return new WaitForSeconds(inspectorWorldAnimator.GetCurrentAnimatorStateInfo(0).length);
+        if (inspectorWorldAnimator != null)
+        {
+            yield return new WaitForSeconds(inspectorWorldAnimator.GetCurrentAnimatorStateInfo(0).length);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
 
-        // Setelah fade-out selesai, sembunyikan objek
-        if (!isButtonActive)
+        if (!isButtonActive && inspectorWorld != null)
         {
             inspectorWorld.SetActive(false);
         }
