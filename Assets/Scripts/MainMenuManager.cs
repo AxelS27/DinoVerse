@@ -82,4 +82,12 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
     }
+
+    public void Puzzle()
+    {
+        if (_endingSceneTransition != null)
+            _endingSceneTransition.SetActive(true);
+
+        StartCoroutine(WaitAndLoadScene("Puzzle"));
+    }
 }

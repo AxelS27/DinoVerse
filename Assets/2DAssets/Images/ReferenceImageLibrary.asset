@@ -67,3 +67,43 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: Spinosaurus
     m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 4692937539462891337
+      m_GuidHigh: 6633510335738208931
+    m_SerializedTextureGuid:
+      m_GuidLow: 13363340909791150517
+      m_GuidHigh: 10894252965020869962
+    m_Size: {x: 0.18, y: 0.18}
+    m_SpecifySize: 1
+    m_Name: Ankylosaurus
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5508288114669488063
+      m_GuidHigh: 10748114063568775831
+    m_SerializedTextureGuid:
+      m_GuidLow: 6364885489487230022
+      m_GuidHigh: 14744247354496908570
+    m_Size: {x: 0.18, y: 0.18}
+    m_SpecifySize: 1
+    m_Name: Mossasaurus
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5022518085393406936
+      m_GuidHigh: 10382959946449378746
+    m_SerializedTextureGuid:
+      m_GuidLow: 18438950200771346981
+      m_GuidHigh: 8525602009814982889
+    m_Size: {x: 0.18, y: 0.18}
+    m_SpecifySize: 1
+    m_Name: KomodoDragon
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5432877964234812377
+      m_GuidHigh: 13983813030009161884
+    m_SerializedTextureGuid:
+      m_GuidLow: 17529185711658069438
+      m_GuidHigh: 8548906648275933195
+    m_Size: {x: 0.18, y: 0.18}
+    m_SpecifySize: 1
+    m_Name: Megalodon
+    m_Texture: {fileID: 0}
