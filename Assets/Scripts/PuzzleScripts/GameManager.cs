@@ -32,11 +32,6 @@ public class GameManager : MonoBehaviour
     private bool hasWon = false;
     private bool isRunningCommands = false;  // flag apakah command sedang dijalankan
 
-    [Header("Crown Animation Settings")]
-    public float crownFloatAmplitude = 0.5f;  // tinggi naik turun crown
-    public float crownFloatFrequency = 1f;    // kecepatan naik turun crown
-    public float crownRotationSpeed = 45f;    // derajat per detik rotasi crown
-
     private Vector3 crownStartPos;
 
     private void Start()
@@ -60,19 +55,10 @@ public class GameManager : MonoBehaviour
             runButton.interactable = true;
     }
 
+    // Animasi crown dihapus, jadi Update juga kosong
     private void Update()
     {
-        AnimateCrown();
-    }
-
-    void AnimateCrown()
-    {
-        // Naik turun sinusoidal
-        float newY = crownStartPos.y + Mathf.Sin(Time.time * crownFloatFrequency * Mathf.PI * 2) * crownFloatAmplitude;
-        crown.transform.position = new Vector3(crown.transform.position.x, newY, crown.transform.position.z);
-
-        // Rotasi 360 derajat pada sumbu Y
-        crown.transform.Rotate(Vector3.up, crownRotationSpeed * Time.deltaTime, Space.World);
+        // Kosong, animasi crown dihapus
     }
 
     public void HandleWinFromDino()
@@ -121,7 +107,7 @@ public class GameManager : MonoBehaviour
         while (Vector3.Distance(newPos, dino.transform.position) < minDistance && attempt < maxAttempts);
 
         crown.transform.position = newPos;
-        crownStartPos = newPos; // update posisi awal crown untuk animasi
+        crownStartPos = newPos; // update posisi awal crown
     }
 
     public void ResetCommands()
