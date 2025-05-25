@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject crown;
     public AudioSource winSound;
 
+    [Header("UI Buttons")]
+    public Button runButton;  // tombol Run yang dikontrol interactivity-nya
+
     [Header("Dino Start Position")]
     public Vector3 dinoStartPosition;
 
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     private bool hasWon = false;
+    private bool isRunningCommands = false;  // flag apakah command sedang dijalankan
 
     [Header("Crown Animation Settings")]
     public float crownFloatAmplitude = 0.5f;  // tinggi naik turun crown
@@ -50,6 +54,10 @@ public class GameManager : MonoBehaviour
 
         // Set posisi awal dino
         dino.transform.position = dinoStartPosition;
+
+        // Pastikan tombol run aktif awalnya
+        if (runButton != null)
+            runButton.interactable = true;
     }
 
     private void Update()
@@ -143,7 +151,10 @@ public class GameManager : MonoBehaviour
 
     public void RunCommands()
     {
-        if (hasWon) return;
+        if (hasWon || isRunningCommands) return;
+
+        if (runButton != null)
+            runButton.interactable = false;  // disable tombol run saat jalan
 
         dino.transform.position = dinoStartPosition;
         dino.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -153,6 +164,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ExecuteCommands()
     {
+        isRunningCommands = true;
+
         var dinoCtrl = dino.GetComponent<DinoController>();
 
         foreach (var slot in slots)
@@ -187,5 +200,10 @@ public class GameManager : MonoBehaviour
             if (slotImage != null)
                 slotImage.color = normalColor;
         }
+
+        isRunningCommands = false;
+
+        if (runButton != null)
+            runButton.interactable = true;  // enable tombol run kembali setelah selesai
     }
 }
