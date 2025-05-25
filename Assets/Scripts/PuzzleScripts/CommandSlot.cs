@@ -58,12 +58,10 @@ public class CommandSlot : MonoBehaviour, IDropHandler
         }
     }
 
-
-
     public void UpdateCurrentCommand()
     {
-        // cek jika di slot ini ada child CommandItem
         CommandItem item = GetComponentInChildren<CommandItem>();
         currentCommand = item != null ? item.commandType : "";
     }
+
 }

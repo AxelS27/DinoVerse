@@ -60,6 +60,14 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(WaitAndLoadScene("SampleScene"));
     }
 
+    public void TutorialMenu()
+    {
+        if (_endingSceneTransition != null)
+            _endingSceneTransition.SetActive(true);
+
+        StartCoroutine(WaitAndLoadScene("TutorialMenu"));
+    }
+
     public void BackToMenu()
     {
         if (_endingSceneTransition != null)
@@ -90,4 +98,9 @@ public class MainMenuManager : MonoBehaviour
 
         StartCoroutine(WaitAndLoadScene("Puzzle"));
     }
+    public void OpenExternalLink()
+    {
+        Application.OpenURL("https://bit.ly/DinoVerseAR");
+    }
+
 }

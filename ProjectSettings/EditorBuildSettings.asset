@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Puzzle.unity
     guid: 0e151e6f838dd204896db027bb5e5f95
+  - enabled: 1
+    path: Assets/Scene/TutorialMenu.unity
+    guid: 796241f0d84053b42a695e5c5e6199a7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3b82075ead9d0304fac16e7883dfd09d, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 8a6c0580c3711c243b70c59071addaa5, type: 2}

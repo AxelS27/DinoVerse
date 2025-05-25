@@ -7,13 +7,12 @@ public class DinoController : MonoBehaviour
     public float rotateAngle = 90f;
     public float speed = 2f;
 
-    private Vector3 initialPosition;
+    public Vector3 initialPosition;
     private Quaternion initialRotation;
 
     void Awake()
     {
         // Simpan posisi dan rotasi awal
-        initialPosition = transform.position;
         initialRotation = transform.rotation;
     }
 
@@ -25,7 +24,7 @@ public class DinoController : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = initialPosition;
-        transform.rotation = initialRotation;
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
     public IEnumerator MoveForward()
