@@ -98,6 +98,14 @@ public class MainMenuManager : MonoBehaviour
 
         StartCoroutine(WaitAndLoadScene("Puzzle"));
     }
+
+    public void Quiz()
+    {
+        if (_endingSceneTransition != null)
+            _endingSceneTransition.SetActive(true);
+
+        StartCoroutine(WaitAndLoadScene("QuizScene"));
+    }
     public void OpenExternalLink()
     {
         Application.OpenURL("https://bit.ly/DinoVerseAR");
