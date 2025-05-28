@@ -7,6 +7,6 @@ public class ScrollToTopOnStart : MonoBehaviour
 
     void Start()
     {
-        scrollRect.verticalNormalizedPosition = 1f; // posisi scroll paling atas
+        scrollRect.verticalNormalizedPosition = 1f;
     }
 }

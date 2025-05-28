@@ -8,7 +8,7 @@ public class DinoCollisionHandler : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Crown"))
         {
-            gameManager?.HandleWinFromDino(); // Tambahkan fungsi publik di GameManager
+            gameManager?.HandleWinFromDino();
         }
     }
 }

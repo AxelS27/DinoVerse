@@ -14,7 +14,7 @@ public class TutorialSlidesManager : MonoBehaviour
 
     [Header("Slides Content")]
     public SlideData[] slides;
-    public Image slideImage; // ganti dari SpriteRenderer ke UI Image
+    public Image slideImage;
     public TextMeshPro titleText;
     public TextMeshPro descriptionText;
 

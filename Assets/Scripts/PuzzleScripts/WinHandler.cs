@@ -18,8 +18,7 @@ public class WinHandler : MonoBehaviour
 
     private void Update()
     {
-        // Cek jarak antar objek, jika overlap maka dianggap menang (bisa diganti pakai collider trigger jika lebih akurat)
-        if (Vector3.Distance(dino.transform.position, crown.transform.position) < 1f) // kamu bisa sesuaikan threshold
+        if (Vector3.Distance(dino.transform.position, crown.transform.position) < 1f)
         {
             HandleWin();
         }
@@ -29,19 +28,9 @@ public class WinHandler : MonoBehaviour
     {
         Debug.Log("Player Win!");
 
-        // Play sound
-
         winSound.Play();
         Debug.Log("Dimainkan");
 
-        // Reset posisi dino
-        var dinoController = dino.GetComponent<DinoController>();
-        if (dinoController != null)
-        {
-            //dinoController.ResetPosition();
-        }
-
-        // Random ulang posisi crown
         RandomizeCrownPosition();
     }
 

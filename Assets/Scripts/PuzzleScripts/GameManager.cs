@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public AudioSource winSound;
 
     [Header("UI Buttons")]
-    public Button runButton;  // tombol Run yang dikontrol interactivity-nya
+    public Button runButton;
 
     [Header("Dino Start Position")]
     public Vector3 dinoStartPosition;
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private AudioSource audioSource;
 
     private bool hasWon = false;
-    private bool isRunningCommands = false;  // flag apakah command sedang dijalankan
+    private bool isRunningCommands = false;
 
     private Vector3 crownStartPos;
 
@@ -47,18 +47,10 @@ public class GameManager : MonoBehaviour
         RandomizeCrownPosition();
         hasWon = false;
 
-        // Set posisi awal dino
         dino.transform.position = dinoStartPosition;
 
-        // Pastikan tombol run aktif awalnya
         if (runButton != null)
             runButton.interactable = true;
-    }
-
-    // Animasi crown dihapus, jadi Update juga kosong
-    private void Update()
-    {
-        // Kosong, animasi crown dihapus
     }
 
     public void HandleWinFromDino()
@@ -84,7 +76,7 @@ public class GameManager : MonoBehaviour
         ResetCommands();
         RandomizeCrownPosition();
 
-        hasWon = false; // Otomatis bisa main lagi
+        hasWon = false;
     }
 
     void RandomizeCrownPosition()
@@ -99,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             newPos = new Vector3(
                 Random.Range(-rangeX, rangeX),
-                crownStartPos.y, // jaga y crown agar tetap di ketinggian awal
+                crownStartPos.y,
                 Random.Range(-rangeZ, rangeZ)
             );
             attempt++;
@@ -107,7 +99,7 @@ public class GameManager : MonoBehaviour
         while (Vector3.Distance(newPos, dino.transform.position) < minDistance && attempt < maxAttempts);
 
         crown.transform.position = newPos;
-        crownStartPos = newPos; // update posisi awal crown
+        crownStartPos = newPos;
     }
 
     public void ResetCommands()
@@ -140,7 +132,7 @@ public class GameManager : MonoBehaviour
         if (hasWon || isRunningCommands) return;
 
         if (runButton != null)
-            runButton.interactable = false;  // disable tombol run saat jalan
+            runButton.interactable = false;
 
         dino.transform.position = dinoStartPosition;
         dino.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -190,6 +182,6 @@ public class GameManager : MonoBehaviour
         isRunningCommands = false;
 
         if (runButton != null)
-            runButton.interactable = true;  // enable tombol run kembali setelah selesai
+            runButton.interactable = true;
     }
 }

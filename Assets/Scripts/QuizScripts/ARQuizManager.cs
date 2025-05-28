@@ -17,12 +17,12 @@ public class ARQuizManager : MonoBehaviour
     public Camera arCamera;
 
     public TextMeshPro questionText3D;
-    public TextMeshProUGUI countdownTextUI;    // Ganti countdown jadi TMP UI
+    public TextMeshProUGUI countdownTextUI;
     public TextMeshPro scoreText3D;
 
-    public AudioClip beepSound;        // Suara beep countdown
-    public AudioClip correctSound;     // Suara benar
-    public AudioClip wrongSound;       // Suara salah
+    public AudioClip beepSound;
+    public AudioClip correctSound;
+    public AudioClip wrongSound;
     public AudioSource audioSource;
 
     private int currentQuestionIndex = 0;
@@ -32,7 +32,6 @@ public class ARQuizManager : MonoBehaviour
     private List<GameObject> spawnedDinos = new List<GameObject>();
     private bool isWaitingForInput = false;
 
-    // Warna yang digunakan
     private Color colorWhite = Color.white;
     private Color colorGreen = Color.green;
     private Color colorRed = Color.red;
@@ -40,13 +39,12 @@ public class ARQuizManager : MonoBehaviour
     void Start()
     {
         scoreText3D.text = "";
-        countdownTextUI.color = colorWhite;  // default putih
+        countdownTextUI.color = colorWhite;
         StartCoroutine(DelayedStart());
     }
 
     IEnumerator DelayedStart()
     {
-        // Delay 3 detik sebelum mulai quiz
         yield return new WaitForSeconds(3f);
         StartCoroutine(CountdownAndShowQuestion());
     }
@@ -74,10 +72,10 @@ public class ARQuizManager : MonoBehaviour
         ClearDinos();
         isWaitingForInput = false;
 
-        int countdownStart = 3; // durasi countdown
+        int countdownStart = 3;
 
         audioSource.PlayOneShot(beepSound);
-        countdownTextUI.color = colorWhite;  // Warna putih saat countdown
+        countdownTextUI.color = colorWhite;
 
         for (int i = countdownStart; i > 0; i--)
         {
@@ -137,7 +135,7 @@ public class ARQuizManager : MonoBehaviour
         {
             correctCount++;
             countdownTextUI.text = "TRUE";
-            countdownTextUI.color = colorGreen;  // warna hijau saat benar
+            countdownTextUI.color = colorGreen;
             if (audioSource != null && correctSound != null)
                 audioSource.PlayOneShot(correctSound);
         }
@@ -145,7 +143,7 @@ public class ARQuizManager : MonoBehaviour
         {
             wrongCount++;
             countdownTextUI.text = "WRONG";
-            countdownTextUI.color = colorRed;    // warna merah saat salah
+            countdownTextUI.color = colorRed;
             if (audioSource != null && wrongSound != null)
                 audioSource.PlayOneShot(wrongSound);
         }
@@ -158,7 +156,7 @@ public class ARQuizManager : MonoBehaviour
     IEnumerator NextAfterDelay()
     {
         yield return new WaitForSeconds(2f);
-        // Reset warna ke putih saat mulai countdown baru
+
         countdownTextUI.color = colorWhite;
         StartCoroutine(CountdownAndShowQuestion());
     }

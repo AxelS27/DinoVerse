@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CommandItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public string commandType;  // Misal: "Move Forward", "Turn Left", dll
+    public string commandType;
     public bool isFromInventory = true;
 
     private RectTransform rectTransform;
@@ -20,7 +20,6 @@ public class CommandItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        // Cari komponen TextMeshProUGUI di child
         commandText = GetComponentInChildren<TextMeshProUGUI>();
         backgroundImage = GetComponent<Image>();
 
@@ -34,7 +33,6 @@ public class CommandItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             commandText.text = commandType;
 
-            // Set warna berdasarkan commandType
             switch (commandType)
             {
                 case "Move Forward":
@@ -64,10 +62,8 @@ public class CommandItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         originalParent = transform.parent;
 
-        // Lepaskan dari parent dulu supaya slot lama kosong dan update currentCommand bisa pas
         transform.SetParent(transform.root);
 
-        // Kalau perlu update command slot lama
         CommandSlot oldSlot = originalParent.GetComponent<CommandSlot>();
         if (oldSlot != null)
         {
@@ -88,16 +84,13 @@ public class CommandItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         if (transform.parent == transform.root)
         {
-            // Drop gagal ditempat yang valid
             if (isFromInventory)
             {
-                // Jika dari inventory, kembalikan ke inventory
                 transform.SetParent(originalParent);
                 rectTransform.anchoredPosition = Vector2.zero;
             }
             else
             {
-                // Jika bukan dari inventory (sudah ada di slot), berarti drop ke tempat invalid, hapus objek
                 Destroy(gameObject);
             }
 
@@ -107,7 +100,6 @@ public class CommandItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
         else
         {
-            // Drop berhasil ke slot baru, update posisi dan command slot baru
             rectTransform.anchoredPosition = Vector2.zero;
 
             CommandSlot newSlot = transform.parent.GetComponent<CommandSlot>();

@@ -15,14 +15,12 @@ public class CommandSlot : MonoBehaviour, IDropHandler
         CommandItem droppedItem = eventData.pointerDrag.GetComponent<CommandItem>();
         if (droppedItem != null)
         {
-            // Cek apakah di slot ini sudah ada CommandItem
             CommandItem existingItem = GetComponentInChildren<CommandItem>();
 
             if (existingItem != null)
             {
                 if (existingItem != droppedItem)
                 {
-                    // Pindahkan existing item ke inventory fixed slotnya sesuai commandType
                     Transform targetInventorySlot = InventoryManager.Instance.GetSlotByCommandType(existingItem.commandType);
                     existingItem.transform.SetParent(targetInventorySlot, false);
                     existingItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
@@ -30,7 +28,6 @@ public class CommandSlot : MonoBehaviour, IDropHandler
                 }
             }
 
-            // Pasang item dropped ke command slot ini
             droppedItem.transform.SetParent(transform, false);
             RectTransform rt = droppedItem.GetComponent<RectTransform>();
             rt.pivot = new Vector2(0.5f, 0.5f);
@@ -40,7 +37,6 @@ public class CommandSlot : MonoBehaviour, IDropHandler
 
             currentCommand = droppedItem.commandType;
 
-            // Kalau dari inventory, buat refill baru di slot fixednya
             if (droppedItem.isFromInventory)
             {
                 Transform refillSlot = InventoryManager.Instance.GetSlotByCommandType(droppedItem.commandType);

@@ -20,10 +20,10 @@ public class DinoSpawner : MonoBehaviour
 
         if (string.IsNullOrEmpty(dinoName))
         {
-            dinoName = "T-REX"; // default T-REX pakai huruf besar biar cocok dengan switch
+            dinoName = "T-REX";
         }
 
-        dinoName = dinoName.ToUpper(); // ubah jadi huruf besar semua
+        dinoName = dinoName.ToUpper();
 
         GameObject dinoToSpawn = null;
 
@@ -63,7 +63,7 @@ public class DinoSpawner : MonoBehaviour
 
         if (dinoToSpawn != null)
         {
-            dinoToSpawn.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);  // Set rotasi Y 180 derajat
+            dinoToSpawn.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
             dinoToSpawn.transform.localPosition = Vector3.zero;
 
             MonoBehaviour[] scripts = dinoToSpawn.GetComponentsInChildren<MonoBehaviour>();

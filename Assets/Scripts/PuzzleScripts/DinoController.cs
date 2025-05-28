@@ -12,7 +12,6 @@ public class DinoController : MonoBehaviour
 
     void Awake()
     {
-        // Simpan posisi dan rotasi awal
         initialRotation = transform.rotation;
     }
 

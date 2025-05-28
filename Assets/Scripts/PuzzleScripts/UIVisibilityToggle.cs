@@ -9,25 +9,21 @@ public class UIVisibilityToggle : MonoBehaviour
 
     private bool isHidden = false;
 
-    // Warna biru RGB (0, 133, 161)
     private Color visibleColor = new Color(0f / 255f, 133f / 255f, 161f / 255f);
-    // Warna merah RGB (255, 0, 0)
     private Color hiddenColor = new Color(255f / 255f, 0f / 255f, 0f / 255f);
 
     private Image buttonImage;
 
-    // Cooldown waktu dalam detik
     private float clickCooldown = .2f;
     private float lastClickTime = -Mathf.Infinity;
 
-    // Durasi fade
     public float fadeDuration = 0.5f;
 
     void Start()
     {
         buttonImage = GetComponent<Image>();
 
-        isHidden = false; // memastikan visibilitas awal tampil
+        isHidden = false;
 
         foreach (GameObject obj in uiElements)
         {
@@ -69,12 +65,12 @@ public class UIVisibilityToggle : MonoBehaviour
 
                 if (!isHidden)
                 {
-                    obj.SetActive(true); // Aktifkan dulu sebelum fade in
+                    obj.SetActive(true);
                     StartCoroutine(FadeCanvasGroup(cg, 1f, fadeDuration, false));
                 }
                 else
                 {
-                    StartCoroutine(FadeCanvasGroup(cg, 0f, fadeDuration, true)); // Fade out, lalu disable
+                    StartCoroutine(FadeCanvasGroup(cg, 0f, fadeDuration, true));
                 }
             }
         }
