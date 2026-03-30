@@ -13,7 +13,7 @@ DinoVerse is an interactive experience focused on immersive environments and use
 <p align="center">
   <img src="screenshots/cards.jpg" width="30%"/>
   <img src="screenshots/ar-view.jpg" width="30%"/>
-  <img src="screenshots/ar-view-2.jpg" width="30%"/>
+  <img src="screenshots/quiz.jpg" width="30%"/>
 </p>
 
 ---
